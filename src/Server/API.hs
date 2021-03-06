@@ -1,6 +1,5 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RankNTypes #-}
 
@@ -22,13 +21,10 @@ import Data.Morpheus.Server
   )
 import Data.Morpheus.Types
   ( ComposedResolver,
-    ID,
     QUERY,
     Resolver,
-    ResolverQ,
     RootResolver (..),
     Undefined (..),
-    lift,
     render,
   )
 import Server.Schema
@@ -52,11 +48,24 @@ resolveDeity DeityArguments {id = "morpheus"} =
       }
 resolveDeity _ = pure Nothing
 
+resolveCharacters :: ComposedResolver o e IO [] Character
+resolveCharacters =
+  pure
+    [ UnknownCreature,
+      CharacterDeity
+        ( Deity
+            { name = pure "Morpheus",
+              power = pure [Shapeshifting]
+            }
+        ),
+      Titan {name = pure "Prometheus"}
+    ]
+
 resolveQuery :: Query (Resolver QUERY e IO)
 resolveQuery =
   Query
     { deity = resolveDeity,
-      characters = pure []
+      characters = resolveCharacters
     }
 
 rootResolver :: RootResolver IO () Query Undefined Undefined
