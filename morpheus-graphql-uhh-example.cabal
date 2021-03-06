@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b1353dee3e503296179f78f5c1bb98418f4fe93dda10e9969724861a8315df66
+-- hash: edf4d96fb8e3be63a7d7723b16ec4d1e8cbc88b9c80dc38a58d8ca59f6d53fe8
 
 name:           morpheus-graphql-uhh-example
 version:        0.1.0
@@ -27,9 +27,8 @@ source-repository head
 executable uhh-example
   main-is: Main.hs
   other-modules:
-      Server.API
+      Server.App
       Server.Schema
-      Server.Scotty
       Server.Utils
       Paths_morpheus_graphql_uhh_example
   hs-source-dirs:

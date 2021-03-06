@@ -3,21 +3,11 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RankNTypes #-}
 
-module Server.API
-  ( app,
-    httpEndpoint,
-  )
-where
+module Server.App (app) where
 
-import Control.Applicative ((<|>))
-import Control.Monad.IO.Class (liftIO)
 import Data.Morpheus
   ( App,
     deriveApp,
-    runApp,
-  )
-import Data.Morpheus.Server
-  ( httpPlayground,
   )
 import Data.Morpheus.Types
   ( ComposedResolver,
@@ -25,18 +15,8 @@ import Data.Morpheus.Types
     Resolver,
     RootResolver (..),
     Undefined (..),
-    render,
   )
 import Server.Schema
-import Server.Utils (isSchema)
-import Web.Scotty
-  ( RoutePattern,
-    ScottyM,
-    body,
-    get,
-    post,
-    raw,
-  )
 import Prelude hiding (id)
 
 resolveDeity :: DeityArguments -> ComposedResolver o e IO Maybe Deity
@@ -78,11 +58,3 @@ rootResolver =
 
 app :: App () IO
 app = deriveApp rootResolver
-
-httpEndpoint ::
-  RoutePattern ->
-  App () IO ->
-  ScottyM ()
-httpEndpoint route app' = do
-  get route $ (isSchema *> raw (render app)) <|> raw httpPlayground
-  post route $ raw =<< (liftIO . runApp app' =<< body)
