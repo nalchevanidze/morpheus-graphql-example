@@ -27,7 +27,7 @@ data Power
 
 data Deity m = Deity
   { name :: m Text,
-    power :: m (Maybe Text)
+    power :: m [Power]
   }
   deriving
     ( Generic,
