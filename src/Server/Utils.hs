@@ -28,6 +28,7 @@ import Network.Wai.Handler.Warp
   ( defaultSettings,
     runSettings,
     setPort,
+    Settings
   )
 import Web.Scotty
   ( ActionM,
@@ -53,7 +54,8 @@ httpEndpoint route app = do
       <|> raw httpPlayground
   post route $ raw =<< (liftIO . runApp app =<< body)
 
+settings :: Settings
+settings = setPort 3000 defaultSettings
+
 startServer :: ScottyM () -> IO ()
 startServer = runSettings settings <=< scottyApp 
-  where
-    settings = setPort 3000 defaultSettings
