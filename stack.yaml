@@ -1,0 +1,11 @@
+# 8.10.1
+resolver: lts-17.5
+save-hackage-creds: false
+packages:
+  - .
+
+allow-newer: true
+extra-deps:
+  - morpheus-graphql-0.17.0
+  - morpheus-graphql-app-0.17.0
+  - morpheus-graphql-core-0.17.0
