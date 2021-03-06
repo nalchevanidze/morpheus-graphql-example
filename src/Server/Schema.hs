@@ -6,13 +6,13 @@ module Server.Schema
   ( Deity (..),
     Query (..),
     DeityArguments (..),
-    Character(..)
+    Character(..), 
+    Power(..)
   )
 where
 
 import Data.Morpheus.Types
-  ( GQLType (..),
-    ID,
+  ( GQLType (..),ID
   )
 import Data.Text (Text)
 import GHC.Generics (Generic)

@@ -1,6 +1,8 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE NamedFieldPuns, RankNTypes #-}
+{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RankNTypes #-}
 
 module Server.API
   ( app,
@@ -20,6 +22,7 @@ import Data.Morpheus.Server
   )
 import Data.Morpheus.Types
   ( ComposedResolver,
+    ID,
     QUERY,
     Resolver,
     ResolverQ,
@@ -27,17 +30,8 @@ import Data.Morpheus.Types
     Undefined (..),
     lift,
     render,
-    ID
   )
-import Data.Morpheus.App
-  ( MapAPI,
-  )
-import Data.Text (Text)
 import Server.Schema
-  ( Deity (..),
-    DeityArguments (..),
-    Query (..),
-  )
 import Server.Utils (isSchema)
 import Web.Scotty
   ( RoutePattern,
@@ -49,9 +43,14 @@ import Web.Scotty
   )
 import Prelude hiding (id)
 
--- RESOLVERS
 resolveDeity :: DeityArguments -> ComposedResolver o e IO Maybe Deity
-resolveDeity DeityArguments {}  = pure Nothing
+resolveDeity DeityArguments {id = "morpheus"} =
+  pure $ Just $
+    Deity
+      { name = pure "Morpheus",
+        power = pure [Shapeshifting]
+      }
+resolveDeity _ = pure Nothing
 
 resolveQuery :: Query (Resolver QUERY e IO)
 resolveQuery =
