@@ -41,6 +41,7 @@ import Web.Scotty
     scottyApp,
   )
 import Prelude
+import Control.Monad((<=<))
 
 isSchema :: ActionM String
 isSchema = param "schema"
@@ -53,8 +54,6 @@ httpEndpoint route app = do
   post route $ raw =<< (liftIO . runApp app =<< body)
 
 startServer :: ScottyM () -> IO ()
-startServer app = do
-  httpApp <- scottyApp app
-  runSettings settings httpApp
+startServer = runSettings settings <=< scottyApp 
   where
     settings = setPort 3000 defaultSettings
