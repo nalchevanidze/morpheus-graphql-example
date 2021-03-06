@@ -1,6 +1,6 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE NamedFieldPuns, RankNTypes #-}
 
 module Server.API
   ( app,
@@ -50,13 +50,14 @@ import Web.Scotty
 import Prelude hiding (id)
 
 -- RESOLVERS
-resolveDeity :: DeityArguments -> ResolverQ e IO Deity
-resolveDeity DeityArguments {id}  = pure Deity{ }
+resolveDeity :: DeityArguments -> ComposedResolver o e IO Maybe Deity
+resolveDeity DeityArguments {}  = pure Nothing
 
 resolveQuery :: Query (Resolver QUERY e IO)
 resolveQuery =
   Query
-    { deity = resolveDeity
+    { deity = resolveDeity,
+      characters = pure []
     }
 
 rootResolver :: RootResolver IO () Query Undefined Undefined

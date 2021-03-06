@@ -6,6 +6,7 @@ module Server.Schema
   ( Deity (..),
     Query (..),
     DeityArguments (..),
+    Character(..)
   )
 where
 
@@ -16,10 +17,27 @@ import Data.Morpheus.Types
 import Data.Text (Text)
 import GHC.Generics (Generic)
 
+data Power
+  = Shapeshifting
+  | Thunderbolt
+  deriving
+    ( Generic,
+      GQLType
+    )
+
 data Deity m = Deity
   { name :: m Text,
     power :: m (Maybe Text)
   }
+  deriving
+    ( Generic,
+      GQLType
+    )
+
+data Character m 
+  = CharacterDeity (Deity m)
+  | Titan { name :: m Text}
+  | UnknownCreature
   deriving
     ( Generic,
       GQLType
@@ -32,8 +50,8 @@ newtype DeityArguments = DeityArguments {id :: ID}
     )
 
 data Query m = Query
-  { deity :: DeityArguments -> m (Deity m),
-    deities :: m [Deity m]
+  { deity :: DeityArguments -> m (Maybe (Deity m)),
+    characters :: m [Character m]
   }
   deriving
     ( Generic,
