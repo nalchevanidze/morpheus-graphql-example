@@ -11,7 +11,7 @@
 - run Server after build succeed.
 
   ```sh
-  uhh-example
+  gql-example
   ```
 
 - visit: http://localhost:3000/

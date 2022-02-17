@@ -5,29 +5,36 @@
 
 packages:
 - completed:
-    hackage: morpheus-graphql-0.17.0@sha256:487ad2e2b11d1038a65068f139f291a4e7b00986c347132b56e141608f0c8789,29450
+    hackage: morpheus-graphql-0.18.0@sha256:51a3e1c787aaf33b09fe213f64ca73301a444d47ec001d07cd47b56f2ea85329,34541
     pantry-tree:
-      size: 42453
-      sha256: 47edd42f1f905dc5982e7f66c291e661e5b067d26167ec30cd1284cf9948538f
+      size: 48949
+      sha256: 8b0ea6ff74e800baa344dc6446ab3811d69d2a94c3eac78b632003b6657dbfb7
   original:
-    hackage: morpheus-graphql-0.17.0
+    hackage: morpheus-graphql-0.18.0
 - completed:
-    hackage: morpheus-graphql-app-0.17.0@sha256:7561a7b371673417c8d7e4200ce2e79f01b5a8557547efdf341136459132d9cc,5425
+    hackage: morpheus-graphql-app-0.18.0@sha256:fdd9b17452e0c17e7464854353fa58626b41ad0520e65938dad198443b416e08,6877
     pantry-tree:
-      size: 5317
-      sha256: d3d8fc0014a6b22eb1fedc29c4472e9d0c921383d7e4971318a2e587c5bafec9
+      size: 7686
+      sha256: d989d6034a0d5ba96753126c0de749652c0724e8363f2a8f06c22a8a9e96e8c4
   original:
-    hackage: morpheus-graphql-app-0.17.0
+    hackage: morpheus-graphql-app-0.18.0
 - completed:
-    hackage: morpheus-graphql-core-0.17.0@sha256:4192366e2c23594a435364cc42832f2949620b8b116a69b57e59fde7111b1a0d,12939
+    hackage: morpheus-graphql-core-0.18.0@sha256:dcd144af1e9e16a09deb911643545e0c46486b8a16b5d0d612d2df926a78bf51,13878
     pantry-tree:
-      size: 17920
-      sha256: af0f6d14d48104baa11b997d26486ea98393a10456ea1c56447587969fffc252
+      size: 19197
+      sha256: 1d4f1a5f35a07f00399bb0fffbc741c651984d17a360b6ad9789ebb4fd78b12a
   original:
-    hackage: morpheus-graphql-core-0.17.0
+    hackage: morpheus-graphql-core-0.18.0
+- completed:
+    hackage: morpheus-graphql-code-gen-0.18.0@sha256:c806d4c1d35865b1497fe380625f22f64848136a8d010d916f62ade0b5cb0bd5,2384
+    pantry-tree:
+      size: 1095
+      sha256: 25a4c6f8e546f5634b43bf297f257434ded74a3209c5885d59b4415d08c7c4eb
+  original:
+    hackage: morpheus-graphql-code-gen-0.18.0
 snapshots:
 - completed:
-    size: 565266
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/17/5.yaml
-    sha256: 78e8ebabf11406261abbc95b44f240acf71802630b368888f6d758de7fc3a2f7
-  original: lts-17.5
+    size: 587393
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/25.yaml
+    sha256: 1b74fb5e970497b5aefae56703f1bd44aa648bd1a5ef95c1eb8c29775087e2bf
+  original: lts-18.25

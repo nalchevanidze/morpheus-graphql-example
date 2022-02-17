@@ -1,0 +1,42 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           gql-example
+version:        0.1.0
+synopsis:       examples
+description:    Examples of GraphQL APIs
+category:       web, graphql
+homepage:       https://github.com/damienstanton/gql-example#readme
+bug-reports:    https://github.com/damienstanton/gql-example/issues
+author:         Damien Stanton
+maintainer:     Damien Stanton
+copyright:      (c) 2022 Damien Stanton
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+
+source-repository head
+  type: git
+  location: https://github.com/damienstanton/gql-example
+
+executable gql-example
+  main-is: Main.hs
+  other-modules:
+      Server.App
+      Server.Schema
+      Server.Utils
+      Paths_gql_example
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      base >=4.7 && <5
+    , morpheus-graphql >=0.18.0
+    , mtl >=2.0 && <=2.3
+    , scotty
+    , text >=1.2.3.0 && <1.3
+    , warp
+  default-language: Haskell2010

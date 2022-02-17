@@ -5,19 +5,19 @@ license: MIT
 author: "Damien Stanton"
 category: web, graphql
 synopsis: examples
-copyright: "(c) 2019 Daviti Nalchevanidze"
+copyright: "(c) 2022 Damien Stanton"
 description: Examples of GraphQL APIs
 
 dependencies:
   - base                            >= 4.7       && <  5
   - text                            >= 1.2.3.0   && <  1.3
   - mtl                             >= 2.0       && <= 2.3
-  - morpheus-graphql                >= 0.17.0
+  - morpheus-graphql                >= 0.18.0
   - scotty
   - warp
 
 executables:
-  example:
+  gql-example:
     main: Main.hs
     source-dirs: src
     ghc-options: -Wall
